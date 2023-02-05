@@ -7,7 +7,6 @@ export interface EventModel {
     "backgroundColor": string,
     "foregroundColor": string,
     "secondaryColor": string,
-    "eventscol": null,
     "showMaps": number,
     "tavTeken": number,
     "comments": string

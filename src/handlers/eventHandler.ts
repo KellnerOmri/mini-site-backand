@@ -1,7 +1,7 @@
 import mysql from "mysql";
 import {EventModel} from "../models/event.model";
 
-let connection: mysql.Connection;
+export let connection: mysql.Connection;
 
 const connectToMysql = async () => {
     connection = mysql.createConnection({
@@ -51,7 +51,6 @@ const updateEventByIdHandler = (req: any, res: any) => {
         backgroundColor:req.body.backgroundColor,
         foregroundColor:req.body.foregroundColor,
         secondaryColor:req.body.secondaryColor,
-        eventscol:req.body.eventscol,
         showMaps:req.body.showMaps,
         tavTeken:req.body.tavTeken,
         comments:req.body.comments
@@ -62,7 +61,6 @@ const updateEventByIdHandler = (req: any, res: any) => {
                 backgroundColor='${updateEvent.backgroundColor}',
                 foregroundColor='${updateEvent.foregroundColor}',
                 secondaryColor='${updateEvent.secondaryColor}',
-                eventscol=${updateEvent.eventscol},
                 showMaps='${updateEvent.showMaps}',
                 tavTeken=${updateEvent.tavTeken},
                 comments='${updateEvent.comments}'
@@ -72,7 +70,6 @@ const updateEventByIdHandler = (req: any, res: any) => {
     })
 }
 const addEventHandler = (req: any, res: any) => {
-    console.log("addEvent")
     const updateEvent:EventModel = {
         eventId:req.body.eventId,
         comp:req.body.comp,
@@ -81,7 +78,6 @@ const addEventHandler = (req: any, res: any) => {
         backgroundColor:req.body.backgroundColor,
         foregroundColor:req.body.foregroundColor,
         secondaryColor:req.body.secondaryColor,
-        eventscol:req.body.eventscol,
         showMaps:req.body.showMaps,
         tavTeken:req.body.tavTeken,
         comments:req.body.comments
@@ -94,7 +90,6 @@ const addEventHandler = (req: any, res: any) => {
       '${updateEvent.backgroundColor}',
       '${updateEvent.foregroundColor}',
       '${updateEvent.secondaryColor}',
-      ${updateEvent.eventscol},
       ${updateEvent.showMaps},
       ${updateEvent.tavTeken},
       '${updateEvent.comments}'

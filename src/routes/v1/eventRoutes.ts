@@ -9,5 +9,5 @@ router.put('/:id', updateEventById);
 router.post('/', addEvent);
 
 export {
-    router as eventsRouter
+    router as eventRouter
 }
