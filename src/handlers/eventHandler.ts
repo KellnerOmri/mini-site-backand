@@ -1,34 +1,10 @@
 import mysql from "mysql";
 import {EventModel} from "../models/event.model";
-
-export let connection: mysql.Connection;
-
-const connectToMysql = async () => {
-    connection = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "password",
-        database: "minisite2",
-    });
-
-    connection.on('connected', () => {
-        console.log('connected to mysql')
-    })
-
-    connection.on('error', (error) => {
-        console.log(`connected to mysql ${error}`)
-    })
-
-    await connection.connect((err: any) => {
-        if (err) {
-            throw err;
-        }
-    });
-}
+import {connection} from "../utils/serverConnect";
 
 const getEventsHandler = (req: any, res: any) => {
-    const query = "select eventId,description" +
-        " from events"
+    const query = `select * 
+        from events`
     connection.query(query, function (err: string, result: any) {
         res.status(200).json(result)
     })
@@ -99,7 +75,6 @@ const addEventHandler = (req: any, res: any) => {
     })
 }
 export {
-    connectToMysql,
     getEventsHandler,
     getEventByIdHandler,
     updateEventByIdHandler,

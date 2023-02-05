@@ -4,7 +4,7 @@ import express  from 'express';
 import cors from "cors";
 import {get404} from "./controllers/error";
 import {mainRouter} from "./routes/mainRoutes";
-import {connectToMysql} from "./handlers/eventHandler";
+import {connectToMysql} from "./utils/serverConnect";
 
 const app = express();
 

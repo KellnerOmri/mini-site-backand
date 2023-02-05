@@ -1,6 +1,6 @@
 
 export interface HeatModel {
-   heatId:number,
+    heatId:number,
     eventId:number,
     Rolls:number,
     prize:number,
@@ -8,5 +8,10 @@ export interface HeatModel {
     amami:number,
     routeDescription:string,
     mapIframe:number,
-    showMap:number
+    showMap:number,
+   "description": string,
+   "startHeat": string, // TODO ask Ran for regex
+   "MinAge": number,
+   "MaxAge": number,
+   "PriceProfile": number
 }
