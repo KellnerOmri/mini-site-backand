@@ -23,7 +23,6 @@ const getEventByIdHandler = (req: any, res: any) => {
 }
 
 const updateEventByIdHandler = (req: any, res: any) => {
-    console.log("updateEventByIdHandler")
     const updateEvent:EventModel = {
         eventId:req.body.eventFormInput.eventId,
         comp:req.body.eventFormInput.comp,
@@ -38,7 +37,6 @@ const updateEventByIdHandler = (req: any, res: any) => {
         date:req.body.eventFormInput.date,
         Type:req.body.eventFormInput.Type
     }
-    console.log(updateEvent,"updateEvent12")
 
     const query = `UPDATE ${miniSiteServer}.events 
             set codeName='${updateEvent.codeName}',
