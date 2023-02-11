@@ -62,33 +62,9 @@ const addCategoryByIdHandler = (req: any, res: any) => {
     connection.query(query, function (err: string, result: any) {
         res.status(200).json(result)
     })
-
 //TODO sortKey & heatId is not unique
-
-
-
-
-
-
-    // const newCategoriesList:CategoryModel[] = req.body.createNewCategoriesList;
-    // let dynamicQuery:string =''
-    // newCategoriesList.forEach((c,index)=>{
-    //     if (index===newCategoriesList.length-1){
-    //         dynamicQuery=dynamicQuery+`(${c.heatId},${c.description},${c.sortKey});`
-    //     }else {
-    //         dynamicQuery=dynamicQuery+`(${c.heatId},${c.description},${c.sortKey}),`
-    //     }
-    // })
-    //
-    // const miniSiteQuery = `INSERT INTO ${miniSiteServer}.compSection(heatId, description, sortKey)
-    // VALUES ${dynamicQuery}`
-    // connection.query(miniSiteQuery, function (err: string, result: any) {
-    //     res.status(200).json(result)
-    // })
 }
 const deleteCategoryByIdHandler = (req: any, res: any) => {
-    console.log(req.body,"startd")
-    console.log("ssss")
     const updateCategory:CategoryModel = {
         heatId: req.body.deleteCategory.heatId,
         description: req.body.deleteCategory.description,

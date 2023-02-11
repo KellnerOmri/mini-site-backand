@@ -60,31 +60,31 @@ const updateHeatByIdHandler = (req: any, res: any) => {
         MaxAge:req.body.heatFormInput.MaxAge,
         PriceProfile:req.body.heatFormInput.PriceProfile,
     }
-    console.log(updateHeat,"hghhgh")
-    const miniSiteQuery = `UPDATE ${miniSiteServer}.heats 
-            set 
-             prize=${updateHeat.prize}  
-             mapUrl=${updateHeat.mapUrl},
-             amami=${updateHeat.amami},
-             routeDescription='${updateHeat.routeDescription}',
-             mapIframe=${updateHeat.mapIframe},
-             showMap=${updateHeat.showMap}  
-            WHERE ${miniSiteServer}.heats.heatId = ${heatId}`
+    const miniSiteQuery = `UPDATE ${miniSiteServer}.heats
+                 set
+                 prize=${updateHeat.prize},
+                 mapUrl='${updateHeat.mapUrl}',
+                 amami=${updateHeat.amami},
+                 routeDescription='${updateHeat.routeDescription}',
+                 mapIframe=${updateHeat.mapIframe},
+                 showMap=${updateHeat.showMap}
+                 WHERE ${miniSiteServer}.heats.heatId = ${heatId}`
+
+
+    const sqgjdnmyQuery = `UPDATE ${sqgjdnmyServer}.CompRoll
+            set
+            description='${updateHeat.description}',
+            startHeat='${updateHeat.startHeat}',
+            MinAge=${updateHeat.MinAge},
+            MaxAge=${updateHeat.MaxAge},
+            PriceProfile=${updateHeat.PriceProfile}
+            WHERE ${sqgjdnmyServer}.CompRoll.Rolls = ${updateHeat.Rolls}`
+
     connection.query(miniSiteQuery, function (err: string, result: any) {
         res.status(200).json(result)
     })
 
-    // const sqgjdnmyQuery = `UPDATE ${sqgjdnmyServer}.CompRoll
-    //         set
-    //         description='${updateHeat.description}',
-    //         startHeat='${updateHeat.startHeat}',
-    //         MinAge=${updateHeat.MinAge},
-    //         MaxAge=${updateHeat.MaxAge},
-    //         PriceProfile=${updateHeat.PriceProfile}
-    //         WHERE ${sqgjdnmyServer}.CompRoll.Rolls = ${updateHeat.Rolls}`
-    // connection.query(sqgjdnmyQuery, function (err: string, result: any) {
-    //     res.status(200).json(result)
-    // })
+    connection.query(sqgjdnmyQuery, function (err: string, result: any) {})
 }
 const addHeatHandler = (req: any, res: any) => {
     const updateHeat:HeatModel = {
