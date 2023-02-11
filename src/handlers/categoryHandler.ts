@@ -1,6 +1,4 @@
 import {connection} from "../utils/serverConnect";
-import {EventModel} from "../models/event.model";
-import {HeatModel} from "../models/heat.model";
 import {CategoryModel} from "../models/category.model";
 const sqgjdnmyServer ="sqgjdnmy_3603";
 const miniSiteServer ="minisite2";
@@ -70,7 +68,6 @@ const deleteCategoryByIdHandler = (req: any, res: any) => {
         description: req.body.deleteCategory.description,
         sortKey: req.body.deleteCategory.sortKey,
     }
-    console.log(updateCategory,"updateCategory")
     const query = `DELETE ${miniSiteServer}.compSection 
     FROM ${miniSiteServer}.compSection
     WHERE compSection.heatId = ${updateCategory.heatId} AND

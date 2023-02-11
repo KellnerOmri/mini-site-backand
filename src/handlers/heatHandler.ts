@@ -1,5 +1,4 @@
 import {connection} from "../utils/serverConnect";
-import {EventModel} from "../models/event.model";
 import {HeatModel} from "../models/heat.model";
 const sqgjdnmyServer ="sqgjdnmy_3603";
 const miniSiteServer ="minisite2";
