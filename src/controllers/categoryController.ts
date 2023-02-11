@@ -1,7 +1,7 @@
 import {
     addCategoriesHandler, addCategoryByIdHandler, deleteCategoryByIdHandler,
     getCategoriesHandler,
-    getEventHeatsCategoriesByIdHandler
+    getEventHeatsCategoriesByIdHandler, updateCategoryByIdHandler
 } from '../handlers/categoryHandler';
 
 
@@ -21,11 +21,15 @@ const addCategoryById = async (req:any, res:any) => {
 const deleteCategoryById = async (req:any, res:any) => {
     await deleteCategoryByIdHandler(req,res);
 }
+const updateCategoryById = async (req:any, res:any) => {
+    await updateCategoryByIdHandler(req,res);
+}
 
 export {
     getCategories,
     getEventHeatsCategoriesById,
     addCategories,
     addCategoryById,
-    deleteCategoryById
+    deleteCategoryById,
+    updateCategoryById
 }

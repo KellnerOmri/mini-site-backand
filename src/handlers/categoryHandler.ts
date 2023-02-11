@@ -77,11 +77,29 @@ const deleteCategoryByIdHandler = (req: any, res: any) => {
         res.status(200).json(result)
     })
 }
+const updateCategoryByIdHandler = (req: any, res: any) => {
+    const sectionId = req.params.id;
+    const updateCategory:CategoryModel = {
+        section:req.body.updateCategory.section,
+        heatId: req.body.updateCategory.heatId,
+        description: req.body.updateCategory.description,
+        sortKey: req.body.updateCategory.sortKey,
+    }
+    console.log(updateCategory,"updateCategory")
+    const query = `UPDATE ${miniSiteServer}.compSection 
+            set description='${updateCategory.description}',
+                sortKey=${updateCategory.sortKey}
+            WHERE compSection.section = ${sectionId}`;
+    connection.query(query, function (err, result) {
+        res.status(200).json(result);
+    });
+}
 
 export {
     getCategoriesHandler,
     getEventHeatsCategoriesByIdHandler,
     addCategoriesHandler,
     addCategoryByIdHandler,
-    deleteCategoryByIdHandler
+    deleteCategoryByIdHandler,
+    updateCategoryByIdHandler
 }
