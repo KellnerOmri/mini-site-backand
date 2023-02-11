@@ -1,11 +1,14 @@
 
 
 
-import {addHeatHandler, getHeatByIdHandler, getHeatsHandler, updateHeatByIdHandler} from "../handlers/heatHandler";
+import {addHeatHandler, getHeatByIdHandler, getHeatsHandler, updateHeatByIdHandler,getEventHeatsIdHandler} from "../handlers/heatHandler";
 
 
 const getHeats = async (req:any, res:any) => {
     await getHeatsHandler(req, res);
+};
+const getEventHeatsId = async (req:any, res:any) => {
+    await getEventHeatsIdHandler(req, res);
 };
 
 const getHeatById = async (req:any, res:any) => {
@@ -24,5 +27,5 @@ export {
     getHeats,
     getHeatById,
     updateHeatById,
-    addHeat
+    addHeat,getEventHeatsId
 }
