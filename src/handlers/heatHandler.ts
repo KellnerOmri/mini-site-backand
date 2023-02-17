@@ -1,5 +1,6 @@
 import {connection} from "../utils/serverConnect";
 import {HeatModel} from "../models/heat.model";
+import {CategoryModel} from "../models/category.model";
 const sqgjdnmyServer ="sqgjdnmy_3603";
 const miniSiteServer ="minisite2";
 const getHeatsHandler = (req: any, res: any) => {
@@ -43,6 +44,18 @@ const getHeatByIdHandler = (req: any, res: any) => {
 
 const updateHeatByIdHandler = (req: any, res: any) => {
     const heatId = req.params.id;
+let categoryList:CategoryModel[]=[]
+    const categoryQuery = `
+    select
+        *
+    from ${miniSiteServer}.compSection as compSection
+ where compSection.heatId = ${heatId}
+    `
+    connection.query(categoryQuery, function (err: string, result: any) {
+       if (result.length>0){
+        categoryList=[...result]
+       }
+    })
     const updateHeat:HeatModel = {
         heatId:req.body.heatFormInput.heatId,
         eventId:req.body.heatFormInput.eventId,
@@ -58,6 +71,7 @@ const updateHeatByIdHandler = (req: any, res: any) => {
         MinAge:req.body.heatFormInput.MinAge,
         MaxAge:req.body.heatFormInput.MaxAge,
         PriceProfile:req.body.heatFormInput.PriceProfile,
+        sections:categoryList
     }
     const miniSiteQuery = `UPDATE ${miniSiteServer}.heats
                  set
@@ -101,6 +115,7 @@ const addHeatHandler = (req: any, res: any) => {
         MinAge:req.body.MinAge,
         MaxAge:req.body.MaxAge,
         PriceProfile:req.body.PriceProfile,
+        sections:[]
     }
     const miniSiteQuery = `INSERT INTO ${miniSiteServer}.heats
     VALUES (${updateHeat.heatId},

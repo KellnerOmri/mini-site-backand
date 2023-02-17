@@ -16,7 +16,6 @@ const getCategoriesHandler = (req: any, res: any) => {
 }
 const getEventHeatsCategoriesByIdHandler = (req: any, res: any) => {
     const heatId = req.params.id;
-
     const query = `
     select
         *
@@ -26,6 +25,7 @@ const getEventHeatsCategoriesByIdHandler = (req: any, res: any) => {
     connection.query(query, function (err: string, result: any) {
         res.status(200).json(result)
     })
+
 }
 
 const addCategoriesHandler = (req: any, res: any) => {

@@ -1,3 +1,4 @@
+import {CategoryModel} from "./category.model";
 
 export interface HeatModel {
     heatId:number,
@@ -9,9 +10,12 @@ export interface HeatModel {
     routeDescription:string,
     mapIframe:number,
     showMap:number,
-   "description": string,
-   "startHeat": string, // TODO ask Ran for regex
-   "MinAge": number,
-   "MaxAge": number,
-   "PriceProfile": number
+   description: string,
+   startHeat: string, // TODO ask Ran for regex
+   MinAge: number,
+   MaxAge: number,
+   PriceProfile: number,
+   sections:CategoryModel[]
 }
+
+
